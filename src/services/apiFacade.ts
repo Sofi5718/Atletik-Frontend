@@ -23,4 +23,20 @@ async function createDeltager(deltager: Deltager) {
     }).then((res) => res.json());
 }
 
-export { getDeltagere, getDiscipliner, createDeltager };
+async function deleteDeltager(id: number) {
+    return fetch(`${DELTAGER_URL}/${id}`, {
+        method: "DELETE",
+    }).then((res) => res.json());
+}
+
+async function updateDeltager(deltager: Deltager) {
+    return fetch(`${DELTAGER_URL}/${deltager.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(deltager),
+    }).then((res) => res.json());
+}
+
+export { getDeltagere, getDiscipliner, createDeltager, deleteDeltager, updateDeltager };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Deltager } from "../services/entityFacade";
-import { createDeltager } from "../services/apiFacade";
+import { createDeltager, updateDeltager } from "../services/apiFacade";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const EMPTY_DELTAGER: Deltager = {
     id: null,
@@ -11,13 +12,20 @@ const EMPTY_DELTAGER: Deltager = {
 };
 
 export default function Form() {
-    const [formData, setFormData] = useState<Deltager>(EMPTY_DELTAGER);
+    const navigate = useNavigate();
+    const deltagerToEdit = useLocation().state || null;
+    const [formData, setFormData] = useState<Deltager>(deltagerToEdit || EMPTY_DELTAGER);
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         console.log("Form submitted");
         console.log(formData);
-        createDeltager(formData);
+        if (deltagerToEdit) {
+            updateDeltager(formData);
+        } else {
+            createDeltager(formData);
+        }
+        navigate("/deltagere");
     }
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
@@ -25,6 +33,10 @@ export default function Form() {
             ...formData,
             [e.target.name]: e.target.value,
         });
+    }
+
+    function handleDelete() {
+    
     }
 
     return (
@@ -64,7 +76,14 @@ export default function Form() {
                     type="submit"
                     className="mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    Tilføj
+                    Gem
+                </button>
+                <button
+                    type="button"
+                    onClick={handleDelete}
+                    className="mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                >
+                    Delete
                 </button>
             </form>
         </div>

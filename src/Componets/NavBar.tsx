@@ -18,7 +18,15 @@ export default function NavBar() {
                     <NavLink to="discipliner" className="text-white hover:text-gray-300">
                         Discipliner
                     </NavLink>
+            
                 </li>
+                <li>
+                    <NavLink to="form" className="text-white hover:text-gray-300">
+                        Form
+                    </NavLink>
+            
+                </li>
+
             </ul>
         </nav>
     );

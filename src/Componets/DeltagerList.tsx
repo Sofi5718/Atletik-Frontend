@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDeltagere } from "../services/apiFacade";
 import { Deltager } from "../services/entityFacade";
-import Form from "./Form";
+import { Link } from "react-router-dom";
 
 export default function DeltagerList() {
     const [deltagere, setDeltagere] = useState<Deltager[]>([]);
@@ -28,11 +28,15 @@ export default function DeltagerList() {
                             <td>{deltager.alder}</td>
                             <td>{deltager.køn}</td>
                             <td>{deltager.klub}</td>
+                            <td>
+                                <Link to="/form" state={deltager}>
+                                    Edit
+                                </Link>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <Form />
         </div>
     );
 }
