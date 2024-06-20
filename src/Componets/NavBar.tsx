@@ -22,7 +22,7 @@ export default function NavBar() {
                 </li>
                 <li>
                     <NavLink to="form" className="text-white hover:text-gray-300">
-                        Form
+                        Tilføj deltager
                     </NavLink>
             
                 </li>
