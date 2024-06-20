@@ -4,7 +4,7 @@ const API_URL = "http://localhost:8080";
 const DELTAGER_URL = API_URL + "/deltagere";
 const DISCIPLIN_URL = API_URL + "/discipliner";
 
-//Product fetches the products from the backend and returns them as a JSON object.
+// fetches from the backend and returns them as a JSON object.
 async function getDeltagere() {
     return fetch(DELTAGER_URL).then((res) => res.json());
 }
@@ -24,9 +24,19 @@ async function createDeltager(deltager: Deltager) {
 }
 
 async function deleteDeltager(id: number) {
-    return fetch(`${DELTAGER_URL}/${id}`, {
+    const options = {
         method: "DELETE",
-    }).then((res) => res.json());
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+
+    const response = await fetch(`${API_URL}/deltagere/${id}`, options);
+
+    if (!response.ok) {
+        throw new Error("Failed to delete participant");
+    }
+    return response;
 }
 
 async function updateDeltager(deltager: Deltager) {
@@ -39,4 +49,9 @@ async function updateDeltager(deltager: Deltager) {
     }).then((res) => res.json());
 }
 
-export { getDeltagere, getDiscipliner, createDeltager, deleteDeltager, updateDeltager };
+async function searchDeltagerByName(navn: string) {
+    return fetch(`${DELTAGER_URL}/search?navn=${navn}`).then((res) => res.json());
+
+}
+
+export { getDeltagere, getDiscipliner, createDeltager, updateDeltager, deleteDeltager, searchDeltagerByName};
