@@ -10,13 +10,13 @@ export default function NavBar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="products" className="text-white hover:text-gray-300">
-                        Products
+                    <NavLink to="deltagere" className="text-white hover:text-gray-300">
+                        Deltagere
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="addProduct" className="text-white hover:text-gray-300">
-                        Add Product
+                    <NavLink to="discipliner" className="text-white hover:text-gray-300">
+                        Discipliner
                     </NavLink>
                 </li>
             </ul>
