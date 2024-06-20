@@ -1,13 +1,15 @@
-/*
-
-interface Product {
+interface Deltager {
     id: number | null;
-    name: string;
-    price: number;
-    weight: number;
+    navn: string;
+    alder: number;
+    køn: string;
+    klub: string;
 }
 
-export type { Product };
+interface Disciplin {
+    id: number | null;
+    navn: string;
+    resultatType: string;
+}
 
-
-*/
+export type { Deltager, Disciplin };
