@@ -7,7 +7,7 @@ const EMPTY_DELTAGER: Deltager = {
     id: null,
     navn: "",
     alder: 0,
-    køn: "mand",
+    køn: "",
     klub: "",
 };
 

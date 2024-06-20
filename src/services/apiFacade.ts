@@ -1,4 +1,5 @@
 import { Deltager } from "./entityFacade";
+import { Disciplin } from "./entityFacade";
 
 const API_URL = "http://localhost:8080";
 const DELTAGER_URL = API_URL + "/deltagere";
@@ -49,9 +50,40 @@ async function updateDeltager(deltager: Deltager) {
     }).then((res) => res.json());
 }
 
-async function searchDeltagerByName(navn: string) {
-    return fetch(`${DELTAGER_URL}/search?navn=${navn}`).then((res) => res.json());
-
+async function createDisciplin(disciplin: Disciplin) {
+    return fetch(DISCIPLIN_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(disciplin),
+    }).then((res) => res.json());
 }
 
-export { getDeltagere, getDiscipliner, createDeltager, updateDeltager, deleteDeltager, searchDeltagerByName};
+async function updateDisciplin(disciplin: Disciplin) {
+    return fetch(`${DISCIPLIN_URL}/${disciplin.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(disciplin),
+    }).then((res) => res.json());
+}
+
+async function deleteDisciplin(id: number) {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+
+    const response = await fetch(`${API_URL}/discipliner/${id}`, options);
+
+    if (!response.ok) {
+        throw new Error("Failed to delete discipline");
+    }
+    return response;
+}
+
+export { getDeltagere, getDiscipliner, createDeltager, updateDeltager, deleteDeltager, createDisciplin, updateDisciplin, deleteDisciplin };

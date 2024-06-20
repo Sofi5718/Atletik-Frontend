@@ -9,9 +9,9 @@ export default function App() {
         <div>
             <NavBar />
             <Routes>
-                <Route path="/" element={"hello"} />
+                <Route path="/" element={"Velkommen, du er logget ind som admin"} />
                 <Route path="deltagere" element={<DeltagerList />} />
-                <Route path="addProduct" element={<DisciplinList />} />
+                <Route path="discipliner" element={<DisciplinList />} />
                 <Route path="form" element={<Form />} />
             </Routes>
         </div>

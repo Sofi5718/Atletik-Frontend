@@ -25,6 +25,7 @@ const [originalDeltagere, setOriginalDeltagere] = useState<Deltager[]>([]);
             setDeltagere(searchResults);
         }
     };
+    
 
     return (
         <div className="flex flex-col items-center justify-center p-5 bg-gray-200 m-auto">
