@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Deltager } from "../services/entityFacade";
-import { createDeltager, updateDeltager } from "../services/apiFacade";
+import { createDeltager, updateDeltager, deleteDeltager } from "../services/apiFacade";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const EMPTY_DELTAGER: Deltager = {
@@ -35,8 +35,17 @@ export default function Form() {
         });
     }
 
-    function handleDelete() {
-    
+    async function handleDelete() {
+        if (formData.id) {
+            try {
+                await deleteDeltager(formData.id);
+                navigate("/deltagere");
+            } catch (error) {
+                console.error("Failed to delete participant", error);
+            }
+        } else {
+            console.error("No participant to delete");
+        }
     }
 
     return (
