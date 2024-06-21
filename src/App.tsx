@@ -3,6 +3,7 @@ import NavBar from "./Componets/NavBar";
 import DeltagerList from "./Componets/DeltagerList";
 import DisciplinList from "./Componets/DisciplinList";
 import Form from "./Componets/Form";
+import Resultater from "./Componets/Resultater";
 
 export default function App() {
     return (
@@ -13,6 +14,7 @@ export default function App() {
                 <Route path="deltagere" element={<DeltagerList />} />
                 <Route path="discipliner" element={<DisciplinList />} />
                 <Route path="form" element={<Form />} />
+                <Route path="resultater" element={<Resultater />} />
             </Routes>
         </div>
     );

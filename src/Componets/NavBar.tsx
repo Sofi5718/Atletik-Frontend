@@ -2,31 +2,33 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
     return (
-        <nav className="bg-slate-600 p-6">
-            <ul className="flex justify-between">
-                <li>
-                    <NavLink to="/" end className="text-white hover:text-gray-300">
+        <nav className="bg-indigo-500 p-6 shadow-lg">
+            <ul className="flex justify-between items-center">
+                <li className="mr-6">
+                    <NavLink to="/" end className="text-white font-semibold text-lg hover:text-gray-300 transition duration-300">
                         Home
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to="deltagere" className="text-white hover:text-gray-300">
+                <li className="mr-6">
+                    <NavLink to="deltagere" className="text-white font-semibold text-lg hover:text-gray-300 transition duration-300">
                         Deltagere
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to="discipliner" className="text-white hover:text-gray-300">
+                <li className="mr-6">
+                    <NavLink to="discipliner" className="text-white font-semibold text-lg hover:text-gray-300 transition duration-300">
                         Discipliner
                     </NavLink>
-            
                 </li>
                 <li>
-                    <NavLink to="form" className="text-white hover:text-gray-300">
+                    <NavLink to="resultater" className="text-white font-semibold text-lg hover:text-gray-300 transition duration-300">
+                        Resultater
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="form" className="text-white font-semibold text-lg hover:text-gray-300 transition duration-300">
                         Tilføj deltager
                     </NavLink>
-            
                 </li>
-
             </ul>
         </nav>
     );

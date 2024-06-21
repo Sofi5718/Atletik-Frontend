@@ -49,12 +49,12 @@ export default function Form() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center p-10 bg-gray-200 rounded-md w-80 m-auto">
+        <div className="flex flex-col items-center justify-center p-10 bg-white rounded-lg shadow-lg w-80 m-auto">
             <form onSubmit={handleSubmit} className="w-full">
                 <label htmlFor="navn" className="block text-sm font-medium text-gray-700">
                     Navn
                 </label>
-                <input type="text" id="navn" name="navn" value={formData.navn} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
+                <input type="text" id="navn" name="navn" value={formData.navn} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
 
                 <label htmlFor="alder" className="block mt-4 text-sm font-medium text-gray-700">
                     Alder
@@ -65,13 +65,13 @@ export default function Form() {
                     name="alder"
                     value={formData.alder}
                     onChange={(e) => setFormData({ ...formData, [e.target.name]: Number(e.target.value) })}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
 
                 <label htmlFor="køn" className="block mt-4 text-sm font-medium text-gray-700">
                     Køn
                 </label>
-                <select id="køn" name="køn" value={formData.køn} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                <select id="køn" name="køn" value={formData.køn} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                     <option value="mand">Mand</option>
                     <option value="kvinde">Kvinde</option>
                 </select>
@@ -79,21 +79,23 @@ export default function Form() {
                 <label htmlFor="klub" className="block mt-4 text-sm font-medium text-gray-700">
                     Klub
                 </label>
-                <input type="text" id="klub" name="klub" value={formData.klub} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
+                <input type="text" id="klub" name="klub" value={formData.klub} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
 
-                <button
-                    type="submit"
-                    className="mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Gem
-                </button>
-                <button
-                    type="button"
-                    onClick={handleDelete}
-                    className="mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2"
-                >
-                    Delete
-                </button>
+                <div className="flex space-x-4">
+                    <button
+                        type="submit"
+                        className="mt-4 w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Gem
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleDelete}
+                        className="mt-4 w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                    >
+                        Slet
+                    </button>
+                </div>
             </form>
         </div>
     );

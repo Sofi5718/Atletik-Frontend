@@ -12,4 +12,12 @@ interface Disciplin {
     resultatType: string;
 }
 
-export type { Deltager, Disciplin };
+interface Resultat {
+    id: number | null;
+    resultat: string;
+    deltagerId: number;
+    disciplinId: number;
+
+}
+
+export type { Deltager, Disciplin, Resultat};

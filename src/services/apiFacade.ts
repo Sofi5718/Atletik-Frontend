@@ -4,6 +4,7 @@ import { Disciplin } from "./entityFacade";
 const API_URL = "http://localhost:8080";
 const DELTAGER_URL = API_URL + "/deltagere";
 const DISCIPLIN_URL = API_URL + "/discipliner";
+const RESULTAT_URL = API_URL + "/resultater";
 
 // fetches from the backend and returns them as a JSON object.
 async function getDeltagere() {
@@ -24,6 +25,7 @@ async function createDeltager(deltager: Deltager) {
     }).then((res) => res.json());
 }
 
+
 async function deleteDeltager(id: number) {
     const options = {
         method: "DELETE",
@@ -32,12 +34,19 @@ async function deleteDeltager(id: number) {
         },
     };
 
-    const response = await fetch(`${API_URL}/deltagere/${id}`, options);
+    try {
+        const response = await fetch(`${API_URL}/deltagere/${id}`, options);
 
-    if (!response.ok) {
-        throw new Error("Failed to delete participant");
+        if (!response.ok) {
+            const errorDetails = await response.text();
+            console.error(`Failed to delete participant: ${errorDetails}`);
+            throw new Error("Failed to delete participant");
+        }
+        return response;
+    } catch (error) {
+        console.error(`Error occurred while deleting participant with ID ${id}:`, error);
+        throw error;
     }
-    return response;
 }
 
 async function updateDeltager(deltager: Deltager) {
@@ -86,4 +95,9 @@ async function deleteDisciplin(id: number) {
     return response;
 }
 
-export { getDeltagere, getDiscipliner, createDeltager, updateDeltager, deleteDeltager, createDisciplin, updateDisciplin, deleteDisciplin };
+async function getResultater() { 
+    return fetch(RESULTAT_URL).then((res) => res.json());
+
+}
+
+export { getDeltagere, getDiscipliner, createDeltager, updateDeltager, deleteDeltager, createDisciplin, updateDisciplin, deleteDisciplin, getResultater };
