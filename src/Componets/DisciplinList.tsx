@@ -23,7 +23,9 @@ export default function DisciplinList() {
         if (editMode) {
             await updateDisciplin(formData);
         } else {
+            console.log(formData);
             const newDisciplin = await createDisciplin(formData);
+            console.log(newDisciplin);
             setDiscipliner((prevDiscipliner) => [...prevDiscipliner, newDisciplin]);
         }
         setFormData(EMPTY_DISCIPLIN);

@@ -13,14 +13,19 @@ export default function Resultater() {
         getDiscipliner().then((data) => setDiscipliner(data));
     }, []);
 
-    const getDeltagerName = (id) => {
+    const getDeltagerName = (id: number) => {
         const deltager = deltagere.find((d) => d.id === id);
         return deltager ? deltager.navn : "Unknown";
     };
 
-    const getDisciplinName = (id) => {
+    const getDisciplinName = (id: number) => {
         const disciplin = discipliner.find((d) => d.id === id);
         return disciplin ? disciplin.navn : "Unknown";
+    };
+
+    const getResultatType = (id: number) => {
+        const disciplinType = discipliner.find((d) => d.id === id);
+        return disciplinType ? disciplinType.resultatType : "Unknown";
     };
 
     return (
@@ -32,6 +37,7 @@ export default function Resultater() {
                         <th className="bg-gray-100 border-b p-2">Deltager</th>
                         <th className="bg-gray-100 border-b p-2">Disciplin</th>
                         <th className="bg-gray-100 border-b p-2">Resultat</th>
+                        <th className="bg-gray-100 border-b p-2">Type</th>
                         <th className="bg-gray-100 border-b p-2">Rediger</th>
                         <th className="bg-gray-100 border-b p-2">Slet</th>
                     </tr>
@@ -42,6 +48,7 @@ export default function Resultater() {
                             <td className="border-b p-2">{getDeltagerName(resultat.deltagerId)}</td>
                             <td className="border-b p-2">{getDisciplinName(resultat.disciplinId)}</td>
                             <td className="border-b p-2">{resultat.resultat}</td>
+                            <td className="border-b p-2"> {getResultatType(resultat.disciplinId)}</td>
                             <td className="border-b p-2">
                                 <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Rediger</button>
                             </td>

@@ -7,7 +7,7 @@ const EMPTY_DELTAGER: Deltager = {
     id: null,
     navn: "",
     alder: 0,
-    køn: "",
+    køn: "Mand",
     klub: "",
 };
 
@@ -71,9 +71,9 @@ export default function Form() {
                 <label htmlFor="køn" className="block mt-4 text-sm font-medium text-gray-700">
                     Køn
                 </label>
-                <select id="køn" name="køn" value={formData.køn} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="mand">Mand</option>
-                    <option value="kvinde">Kvinde</option>
+                <select id="køn" defaultValue={formData.køn} name="køn" value={formData.køn} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="Mand">Mand</option>
+                    <option value="Kvinde">Kvinde</option>
                 </select>
 
                 <label htmlFor="klub" className="block mt-4 text-sm font-medium text-gray-700">

@@ -25,7 +25,6 @@ async function createDeltager(deltager: Deltager) {
     }).then((res) => res.json());
 }
 
-
 async function deleteDeltager(id: number) {
     const options = {
         method: "DELETE",
@@ -35,7 +34,7 @@ async function deleteDeltager(id: number) {
     };
 
     try {
-        const response = await fetch(`${API_URL}/deltagere/${id}`, options);
+        const response = await fetch(`${DELTAGER_URL}/${id}`, options);
 
         if (!response.ok) {
             const errorDetails = await response.text();
@@ -60,6 +59,7 @@ async function updateDeltager(deltager: Deltager) {
 }
 
 async function createDisciplin(disciplin: Disciplin) {
+    console.log(disciplin);
     return fetch(DISCIPLIN_URL, {
         method: "POST",
         headers: {
@@ -95,9 +95,8 @@ async function deleteDisciplin(id: number) {
     return response;
 }
 
-async function getResultater() { 
+async function getResultater() {
     return fetch(RESULTAT_URL).then((res) => res.json());
-
 }
 
 export { getDeltagere, getDiscipliner, createDeltager, updateDeltager, deleteDeltager, createDisciplin, updateDisciplin, deleteDisciplin, getResultater };
